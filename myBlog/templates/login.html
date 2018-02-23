@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<div id="fh5co-main" style="margin:200px 0px" align="center">
+    <div style="width:60%" align="left">
+        <form>
+            <div class="form-group">
+            <strong><em style="font-size:17px;">UserName</em></strong>
+            <input type="text" class="form-control" id="login_username" placeholder="UserName">
+            </div>
+            <div class="form-group">
+            <strong><em style="font-size:17px;">Password</em></strong>
+            <input type="password" class="form-control" id="login_password" placeholder="Password">
+            </div>
+            <button type="button" class="btn btn-warning" id="login" style="width:100%;height:60px">Login</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block script %}
+<script type="text/javascript">
+
+    $("#login").click(function(){
+        var login_username = $("#login_username").text()
+        var login_password = $("#login_password").text()
+        var data = {"username":login_username,"password":login_password}
+        $.ajax({
+            url: "http://localhost:8000/loginApi/",
+            type: 'POST',
+            data: data,
+            success: function(data) {
+                console.log(data)
+            }
+        });
+    });
+</script>
+{% endblock %}
+
