@@ -1,0 +1,45 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Insert title here</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+	<div class="wrap">
+        <div class="container">
+            <h1>登陆中心</h1>
+            <form action="/loginApi/" method="post">
+				<input type="text" name="username" placeholder="用户名" />
+                <input type="password" placeholder="密码" name="password"/>
+                <input type="submit" value="Login" name="submit"/>
+			</form>
+        </div>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        //请求数据时 等待数据 显示太极
+        $('body').append("<div style='display:none;width:100%; margin:0 auto;position:fixed;left:0;top:0;bottom: 0;z-index: 111;opacity: 0.5;' id='loading'><a style='left: 50%;position: absolute;top:50%'><img src='{% static 'images/loader.gif' %}' /></a></div>")
+        $(document).ajaxStart(function(){
+        　　$("#loading").show();
+        })
+        $(document).ajaxComplete(function(){
+        　　$("#loading").hide();
+        })
+    
+        </script>
+</body>
+</html>
